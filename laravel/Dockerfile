@@ -5,7 +5,6 @@ FROM php:7.4-apache
 USER root
 
 #Internal Environment
-ENV RUN_HOST 0.0.0.0
 ENV RUN_PORT 6060
 
 #Install php extension & mysql driver
@@ -27,7 +26,7 @@ RUN composer install
 # Run When Build Container
 CMD php artisan key:generate && \
     php artisan migrate --seed && \
-    php artisan serve --host ${RUN_HOST} --port=${RUN_PORT}
+    php artisan serve --host 0.0.0.0 --port=${RUN_PORT}
 
 # Expose Port
 EXPOSE ${APP_PORT}
