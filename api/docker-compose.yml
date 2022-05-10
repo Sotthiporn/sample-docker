@@ -1,0 +1,25 @@
+version: "3.8"
+services:
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        container_name: ${APP_CONTAINTER}
+        ports:
+            - ${APP_PORT}:${APP_PORT}
+        volumes:
+            - ./:${APP_DIR}
+        depends_on:
+            - db
+    db:
+        image: mysql:5.7.31
+        hostname: ${DB_CONNECTION}
+        restart: always
+        container_name: ${DB_CONTAINTER}
+        environment:
+            MYSQL_DATABASE: ${DB_DATABASE}
+            MYSQL_USER: ${DB_USERNAME}
+            MYSQL_ALLOW_EMPTY_PASSWORD: 1
+            MYSQL_PASSWORD: ${DB_PASSWORD}
+        ports:
+            - ${DB_PORT}:${DB_PORT}
