@@ -6,6 +6,7 @@ USER root
 
 #Internal Environment
 ENV RUN_PORT 6060
+ENV WORK_DIR /api
 
 #Install php extension & mysql driver
 RUN docker-php-ext-install pdo pdo_mysql sockets
@@ -15,7 +16,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- \
     --install-dir=/usr/local/bin --filename=composer
 
 # Working Directory
-WORKDIR ${APP_DIR}
+WORKDIR ${WORK_DIR}
 
 # Copy Current Directory to Contatiner Directory
 COPY . .
