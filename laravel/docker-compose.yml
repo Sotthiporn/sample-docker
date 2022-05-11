@@ -8,6 +8,7 @@ services:
         ports:
             - ${APP_PORT}:${APP_PORT}
         volumes:
+            - ${APP_DIR}/vendor
             - ./:${APP_DIR}
         depends_on:
             - db
