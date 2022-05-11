@@ -6,7 +6,7 @@ USER root
 
 #Internal Environment
 ENV RUN_PORT 6060
-ENV WORK_DIR /api
+ENV WORK_DIR /app
 
 
 # Install dependencies
